@@ -13,8 +13,8 @@
         </div>
 
         <h3>Cadastro de produto</h3>
-        <form>
-            <input type="text" placeholder="Nome do produto" required>
+        <form id="formProduto">
+            <input type="text" id="nomeProduto" placeholder="Nome do produto" required>
             <input type="number" placeholder="Quantidade" required>
             <input type="text" placeholder="Preço" required>
 
@@ -24,5 +24,19 @@
             </div>
         </form>
     </div>
+
+   <script>
+        const nomeProduto = document.getElementById('nomeProduto');
+
+        nomeProduto.addEventListener('input', function() {
+            this.value = this.value.replace(/[^A-Za-zÀ-ÿ\s]/g, '');
+        });
+
+        const form = document.getElementById('formProduto');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Produto cadastrado: ' + nomeProduto.value);
+        });
+    </script>
 </body>
 </html>
